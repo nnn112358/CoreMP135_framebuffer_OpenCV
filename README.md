@@ -19,7 +19,7 @@ $ cmake ..
 $ make
 ```
 
-### result
+### result in CoreMP135
 Copy the generated binary to CoreMP135 and run it.
 
 ```
