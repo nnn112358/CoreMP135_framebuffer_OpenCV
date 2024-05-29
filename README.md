@@ -1,7 +1,8 @@
 # CoreMP135_framebuffer_OpenCV
 
-CoreMP135で、LCDとDisplayPortに画像を表示するサンプルです。ライブラリにはOpenCVを使っています。
-This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV as the library.
+CoreMP135で、LCDとDisplayPortに画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。
+
+This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.
 
 
 
