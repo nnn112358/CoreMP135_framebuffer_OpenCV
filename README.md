@@ -83,10 +83,7 @@ Blue: Offset 0, Length 5
 
 # Referrence
 
-CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる。
-
-https://x.com/nnn112358/status/1795632180200432036
-
+CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる。 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/78c63160-3e39-43e0-bf4f-8327f33d26bf">
 
 ```
@@ -95,5 +92,8 @@ $user@M5Core135 $ sudo fbi -d /dev/fb0 -T 1 -a 06b.jpg
 $user@M5Core135 $ sudo fbi -d /dev/fb1 -T 1 -a 06b.jpg
 ```
 
+### Apendix
+
+https://x.com/nnn112358/status/1795632180200432036
 
 
