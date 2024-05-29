@@ -13,7 +13,7 @@
 int view_information(struct fb_fix_screeninfo &finfo ,struct fb_var_screeninfo &vinfo){
 
 
-    // ƒfƒoƒCƒXî•ñ‚Ìo—Í
+    // ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ã®å‡ºåŠ›
     std::cout << "--------------------------\n"
               << "Frame Buffer Device Information:\n"
               << "ID: " << finfo.id << "\n"
@@ -26,7 +26,7 @@ int view_information(struct fb_fix_screeninfo &finfo ,struct fb_var_screeninfo &
 
 
 
-    // ƒXƒNƒŠ[ƒ“î•ñ‚Ìo—Í
+    // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æƒ…å ±ã®å‡ºåŠ›
     std::cout << "Variable Framebuffer Information:\n"
               << "Resolution: " << vinfo.xres << "x" << vinfo.yres << "\n"
               << "Virtual Resolution: " << vinfo.xres_virtual << "x" << vinfo.yres_virtual << "\n"
@@ -41,7 +41,7 @@ int view_information(struct fb_fix_screeninfo &finfo ,struct fb_var_screeninfo &
 
 
 int main() {
-    // ƒtƒŒ[ƒ€ƒoƒbƒtƒ@ƒfƒoƒCƒX‚Ìƒtƒ@ƒCƒ‹ƒfƒBƒXƒNƒŠƒvƒ^
+    // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒãƒƒãƒ•ã‚¡ãƒ‡ãƒã‚¤ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿
     int fbfd0 = open("/dev/fb0", O_RDWR);
     if (fbfd0 == -1) {
         perror("Cannot open framebuffer device");
@@ -54,7 +54,7 @@ int main() {
         return 1;
     }
 
-    // ŒÅ’èƒXƒNƒŠ[ƒ“î•ñ‚Ì\‘¢‘Ì
+    // å›ºå®šã‚¹ã‚¯ãƒªãƒ¼ãƒ³æƒ…å ±ã®æ§‹é€ ä½“
     struct fb_fix_screeninfo finfo0;
     if (ioctl(fbfd0, FBIOGET_FSCREENINFO, &finfo0)) {
         perror("Error reading fixed screen info");
@@ -62,7 +62,7 @@ int main() {
         return 1;
     }
     
-    // ŒÅ’èƒXƒNƒŠ[ƒ“î•ñ‚Ì\‘¢‘Ì
+    // å›ºå®šã‚¹ã‚¯ãƒªãƒ¼ãƒ³æƒ…å ±ã®æ§‹é€ ä½“
     struct fb_fix_screeninfo finfo1;
     if (ioctl(fbfd1, FBIOGET_FSCREENINFO, &finfo1)) {
         perror("Error reading fixed screen info");
@@ -70,7 +70,7 @@ int main() {
         return 1;
     }
     
-    // ‰Â•ÏƒXƒNƒŠ[ƒ“î•ñ‚Ì\‘¢‘Ì
+    // å¯å¤‰ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æƒ…å ±ã®æ§‹é€ ä½“
     struct fb_var_screeninfo vinfo0;
     if (ioctl(fbfd0, FBIOGET_VSCREENINFO, &vinfo0)) {
         perror("Error reading variable screen info");
@@ -78,7 +78,7 @@ int main() {
         return 1;
     }
     
-    // ‰Â•ÏƒXƒNƒŠ[ƒ“î•ñ‚Ì\‘¢‘Ì
+    // å¯å¤‰ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æƒ…å ±ã®æ§‹é€ ä½“
     struct fb_var_screeninfo vinfo1;
     if (ioctl(fbfd1, FBIOGET_VSCREENINFO, &vinfo1)) {
         perror("Error reading variable screen info");
@@ -93,7 +93,7 @@ int main() {
     
     
 
-    // ƒƒ‚ƒŠƒ}ƒbƒsƒ“ƒO
+    // ãƒ¡ãƒ¢ãƒªãƒãƒƒãƒ”ãƒ³ã‚°
     char* fbAddr0 = static_cast<char*>(mmap(nullptr, finfo0.smem_len, PROT_READ | PROT_WRITE, MAP_SHARED, fbfd0, 0));
     if (fbAddr0 == MAP_FAILED) {
         perror("Failed to mmap");
@@ -110,7 +110,7 @@ int main() {
 
 
 
-    // ‰æ‘œ‚Ì“Ç‚İ‚İ
+    // ç”»åƒã®èª­ã¿è¾¼ã¿
     cv::Mat image = cv::imread("06b.jpg");
     if (image.empty()) {
         std::cerr << "Error: Image not found or empty.\n";
@@ -122,17 +122,20 @@ int main() {
         return 1;
     }
 
-    // ‰æ‘œ‚ÌƒŠƒTƒCƒY‚ÆƒJƒ‰[ƒtƒH[ƒ}ƒbƒg•ÏŠ·
+    // ç”»åƒã®ãƒªã‚µã‚¤ã‚ºã¨ã‚«ãƒ©ãƒ¼ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå¤‰æ›
     cv::Mat displayport_image;
     cv::Mat lcd_image;
 
     cv::resize(image, displayport_image, cv::Size(vinfo0.xres, vinfo0.yres));
     cv::resize(image, lcd_image, cv::Size(vinfo1.xres, vinfo1.yres));
-    
+
+    // DisplayPort(HDMI):BGR888(24bit Color)â‡’RGB565(16bit Color),OpenCVã¯COLOR_BGR2RGB565ãŒãªã„ãŸã‚ã€åŒã˜å¤‰æ›ã¨ãªã‚‹COLOR_RGB2BGR565ã§ä»£æ›¿ã€‚
     cv::cvtColor(displayport_image, displayport_image, cv::COLOR_RGB2BGR565);
+	
+    //LCD:BGR888(24bit Color)â‡’BGR565(16bit Color)
     cv::cvtColor(lcd_image, lcd_image, cv::COLOR_BGR2BGR565);
 
-    // ƒtƒŒ[ƒ€ƒoƒbƒtƒ@‚Ö‚Ì‘‚«‚İ
+    // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒãƒƒãƒ•ã‚¡ã¸ã®æ›¸ãè¾¼ã¿
     size_t screen_size0 = displayport_image.total() * displayport_image.elemSize();
     memcpy(fbAddr0, displayport_image.data, screen_size0);
 
@@ -140,7 +143,7 @@ int main() {
     memcpy(fbAddr1, lcd_image.data, screen_size1);
     
 
-    // ƒŠƒ\[ƒX‚Ì‰ğ•ú
+    // ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾
     munmap(fbAddr0, finfo0.smem_len);
     munmap(fbAddr1, finfo1.smem_len);
     
