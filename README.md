@@ -1,8 +1,17 @@
 # CoreMP135_framebuffer_OpenCV
 
-CoreMP135で、LCDとDisplayPortに画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。
-
+CoreMP135で、LCDとDisplayPort(HDMI)に画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。
 This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.
+
+The following color conversion is required in CoreMP135.  
+CoreMP135では、以下の色変換が必要です。  DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。
+DisplayPort(HDMI):BGR888⇒RGB565  
+LCD:BGR888⇒BGR565  
+
+また、デフォルトでは以下の解像度になります。  
+In addition, the default resolution is as follows.  
+DisplayPort(HDMI): 1280x720  
+LCD:320x240  
 
 
 
@@ -61,5 +70,7 @@ Green: Offset 5, Length 6
 Blue: Offset 0, Length 5
 --------------------------
 ```
+
+# Referrence
 
 
