@@ -1,21 +1,20 @@
 # CoreMP135_framebuffer_OpenCV
 
-CoreMP135で、LCDとDisplayPort(HDMI)に画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。
-This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.
+CoreMP135で、LCDとDisplayPort(HDMI)に画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。  
+CoreMP135では、画像データをframebufferに書き込む前に、以下の色変換が必要です。  DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。  
 
-CoreMP135では、画像データをframebufferに書き込む前に、以下の色変換が必要です。  DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。
-In CoreMP135, the color conversion written to framebuffer is different.  The B and R channels must be reversed between DisplayPort and LCD.
-DisplayPort(HDMI):BGR888⇒RGB565  
-LCD:BGR888⇒BGR565  
+This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.  
+In CoreMP135, the color conversion written to framebuffer is different.  The B and R channels must be reversed between DisplayPort and LCD.  
 
-また、デフォルトでは以下の解像度になります。  
-In addition, the default resolution is as follows.  
-DisplayPort(HDMI): 1280x720  
-LCD:320x240  
+
+|Display|Color conversion | resolution |
+|-------------| ------------- | ------------- |
+|DisplayPort(HDMI)| BGR888⇒RGB565   |  1280x720   |
+|LCD|BGR888⇒BGR565 | 320x240    |
 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/7253fda7-6f79-4ebc-9a60-d4bf5b55b4bf">
 
-## M5_Co eMP135Enviroment
+## M5_CoreMP135_Enviroment
 
 The firmware is "M5_CoreMP135_debian12_20240515"  
 https://docs.m5stack.com/en/guide/linux/coremp135/image ⇒ M5_CoreMP135_debian12_20240515	
