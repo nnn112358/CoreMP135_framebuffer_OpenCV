@@ -13,7 +13,17 @@ In addition, the default resolution is as follows.
 DisplayPort(HDMI): 1280x720  
 LCD:320x240  
 
+<img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/7253fda7-6f79-4ebc-9a60-d4bf5b55b4bf">
 
+## Enviroment
+
+The firmware is "M5_CoreMP135_debian12_20240515"  
+https://docs.m5stack.com/en/guide/linux/coremp135/image ⇒ M5_CoreMP135_debian12_20240515	
+
+```
+$ $user@M5Core135 $ uname -a
+Linux M5Core135 5.15.118 #1 SMP PREEMPT Tue May 7 15:14:07 CST 2024 armv7l GNU/Linux
+```
 
 ### Install
 
@@ -32,7 +42,7 @@ $ make
 Copy the generated binary to CoreMP135 and run it.
 
 ```
-nnn@M5Core135:/home/share$ sudo ./frame_buffer_opencv
+user@M5Core135:/home/share$ sudo ./frame_buffer_opencv
 /dev/fb0 information
 --------------------------
 Frame Buffer Device Information:
@@ -72,5 +82,18 @@ Blue: Offset 0, Length 5
 ```
 
 # Referrence
+
+CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる。
+
+https://x.com/nnn112358/status/1795632180200432036
+
+<img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/78c63160-3e39-43e0-bf4f-8327f33d26bf">
+
+```
+$user@M5Core135 $ apt install fbi
+$user@M5Core135 $ sudo fbi -d /dev/fb0 -T 1 -a 06b.jpg
+$user@M5Core135 $ sudo fbi -d /dev/fb1 -T 1 -a 06b.jpg
+```
+
 
 
