@@ -3,8 +3,8 @@
 CoreMP135で、LCDとDisplayPort(HDMI)に画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。
 This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.
 
-CoreMP135では、画像データをframebudderに書き込む前に、以下の色変換が必要です。  DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。
-CoreMP135 requires the following color conversion before writing image data to framebuffer. You need to reverse the B and R channels on DisplayPort and LCD.
+CoreMP135では、画像データをframebufferに書き込む前に、以下の色変換が必要です。  DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。
+In CoreMP135, the color conversion written to framebuffer is different.  The B and R channels must be reversed between DisplayPort and LCD.
 DisplayPort(HDMI):BGR888⇒RGB565  
 LCD:BGR888⇒BGR565  
 
