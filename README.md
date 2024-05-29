@@ -15,7 +15,7 @@ LCD:320x240
 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/7253fda7-6f79-4ebc-9a60-d4bf5b55b4bf">
 
-## Enviroment
+## M5_Co eMP135Enviroment
 
 The firmware is "M5_CoreMP135_debian12_20240515"  
 https://docs.m5stack.com/en/guide/linux/coremp135/image ⇒ M5_CoreMP135_debian12_20240515	
@@ -25,7 +25,7 @@ $ $user@M5Core135 $ uname -a
 Linux M5Core135 5.15.118 #1 SMP PREEMPT Tue May 7 15:14:07 CST 2024 armv7l GNU/Linux
 ```
 
-### Install
+### Cross Build instraction (Ubuntu22.04)
 
 ```
 $ wget https://www.eizo.co.jp/eizolibrary/other/itmedia04/06b.jpg
@@ -37,6 +37,17 @@ $ cd build
 $ cmake ..
 $ make
 ```
+
+#### OpenCV-Mobile Cross Build instraction
+```
+$ wget -q https://github.com/nihui/opencv-mobile/releases/latest/download/opencv-mobile-4.9.0.zip
+$ unzip -q opencv-mobile-4.9.0.zip
+$ cd opencv-mobile-4.9.0
+$ cmake -B build/arm -DCMAKE_TOOLCHAIN_FILE=./arm-gnueabihf.toolchain.cmake -DCMAKE_BUILD_TYPE=Release `cat ./options.txt` -DBUILD_opencv_world=OFF .
+$ cmake --build build/arm
+$ cmake --install build/arm --prefix install/arm
+```
+
 
 ### result in CoreMP135
 Copy the generated binary to CoreMP135 and run it.
