@@ -129,8 +129,8 @@ int main() {
     cv::resize(image, displayport_image, cv::Size(vinfo0.xres, vinfo0.yres));
     cv::resize(image, lcd_image, cv::Size(vinfo1.xres, vinfo1.yres));
 
-    // DisplayPort(HDMI):BGR888(24bit Color)⇒RGB565(16bit Color),OpenCVはCOLOR_BGR2RGB565がないため、同じ変換となるCOLOR_RGB2BGR565で代替。
-    cv::cvtColor(displayport_image, displayport_image, cv::COLOR_RGB2BGR565);
+    // DisplayPort(HDMI):BGR888(24bit Color)⇒BGR565(16bit Color)
+    cv::cvtColor(displayport_image, displayport_image, cv::COLOR_BGR2BGR565);
 	
     //LCD:BGR888(24bit Color)⇒BGR565(16bit Color)
     cv::cvtColor(lcd_image, lcd_image, cv::COLOR_BGR2BGR565);
