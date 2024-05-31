@@ -2,16 +2,24 @@
 
 CoreMP135で、LCDとDisplayPort(HDMI)に画像を表示するサンプルです。ライブラリにはOpenCV-Mobileを使っています。  
 CoreMP135では、画像データをframebufferに書き込む前に、以下の色変換が必要です。(Fimware ver:M5_CoreMP135_debian12_20240515)
-DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。  
+~~DisplayPortとLCDとで、BチャンネルとRチャンネルを逆にする必要があります。~~
 
 This is a sample that displays images on LCD and DisplayPort using coremp135. I am using OpenCV-Mobile as the library.  
-In CoreMP135, the color conversion written to framebuffer is different.  The B and R channels must be reversed between DisplayPort and LCD.  
+In CoreMP135, the color conversion written to framebuffer is different. ~~The B and R channels must be reversed between DisplayPort and LCD.~~
+
+2024/5/30以降のlt8618sxb_mcu_configを導入することで、DisplayPortとLCDとで同じ色変換となる。  
+By running lt8618sxb_mcu_config after 2024/5/30, the color conversion will be the same for DisplayPort and LCD.  
+https://github.com/m5stack/CoreMP135_buildroot-external-st/commit/b881954c214ccec3e6956fdbda0db5e5a4bebd0e  
+https://github.com/m5stack/M5Stack_Linux_Libs/commit/e7cf5787bd4f9206ec88721b54c44f59a6b3f72c  
+
+
 
 
 |Display|Color conversion | resolution |
 |-------------| ------------- | ------------- |
-|DisplayPort(HDMI)| BGR888⇒RGB565   |  1280x720   |
+|DisplayPort(HDMI)| BGR888⇒BGR565   |  1280x720   |
 |LCD|BGR888⇒BGR565 | 320x240    |
+
 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/7253fda7-6f79-4ebc-9a60-d4bf5b55b4bf">
 
@@ -96,6 +104,13 @@ Blue: Offset 0, Length 5
 
 CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる。 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/78c63160-3e39-43e0-bf4f-8327f33d26bf">
+
+2024/5/30以降のlt8618sxb_mcu_configを導入することで、DisplayPortとLCDとで同じ色変換となる。  
+By running lt8618sxb_mcu_config after 2024/5/30, the color conversion will be the same for DisplayPort and LCD.  
+
+経緯はこちら。  
+https://x.com/dollychun/status/1796065952519409862  
+https://x.com/ciniml/status/1796068254600814990  
 
 ```
 $user@M5Core135 $ apt install fbi
