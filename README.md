@@ -100,15 +100,15 @@ Blue: Offset 0, Length 5
 --------------------------
 ```
 
-# Referrence
-
-CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる。 
+### Apendix
+CoreMP135 で、アプリケーションfbi からDisplayPortとLCDにカラーバーを表示と、色がずれる問題が発生した。 
 <img width="640" alt="S__80977923" src="https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV/assets/27625496/78c63160-3e39-43e0-bf4f-8327f33d26bf">
 
-2024/5/30以降のlt8618sxb_mcu_configを導入することで、DisplayPortとLCDとで同じ色変換となる。  
+2024/5/30以降のlt8618sxb_mcu_configを導入することで、DisplayPortとLCDとで同じ色変換となり解消した。  
 By running lt8618sxb_mcu_config after 2024/5/30, the color conversion will be the same for DisplayPort and LCD.  
 
 経緯はこちら。  
+https://x.com/nnn112358/status/1795632180200432036  
 https://x.com/dollychun/status/1796065952519409862  
 https://x.com/ciniml/status/1796068254600814990  
 
@@ -118,8 +118,6 @@ $user@M5Core135 $ sudo fbi -d /dev/fb0 -T 1 -a 06b.jpg
 $user@M5Core135 $ sudo fbi -d /dev/fb1 -T 1 -a 06b.jpg
 ```
 
-### Apendix
 
-https://x.com/nnn112358/status/1795632180200432036
 
 
