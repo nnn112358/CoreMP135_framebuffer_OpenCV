@@ -13,8 +13,6 @@ https://github.com/m5stack/CoreMP135_buildroot-external-st/commit/b881954c214cce
 https://github.com/m5stack/M5Stack_Linux_Libs/commit/e7cf5787bd4f9206ec88721b54c44f59a6b3f72c  
 
 
-
-
 |Display|Color conversion | resolution |
 |-------------| ------------- | ------------- |
 |DisplayPort(HDMI)| BGR888⇒BGR565   |  1280x720   |
@@ -113,6 +111,7 @@ https://x.com/dollychun/status/1796065952519409862
 https://x.com/ciniml/status/1796068254600814990  
 
 ```
+$user@M5Core135 $ wget https://www.eizo.co.jp/eizolibrary/other/itmedia04/06b.jpg
 $user@M5Core135 $ apt install fbi
 $user@M5Core135 $ sudo fbi -d /dev/fb0 -T 1 -a 06b.jpg
 $user@M5Core135 $ sudo fbi -d /dev/fb1 -T 1 -a 06b.jpg
