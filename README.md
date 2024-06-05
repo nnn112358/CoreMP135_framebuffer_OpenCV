@@ -34,7 +34,6 @@ Linux M5Core135 5.15.118 #1 SMP PREEMPT Tue May 7 15:14:07 CST 2024 armv7l GNU/L
 ### Cross Build instraction (Ubuntu22.04)
 
 ```
-$ wget https://www.eizo.co.jp/eizolibrary/other/itmedia04/06b.jpg
 $ sudo apt install arm-linux-gnueabihf-g++ arm-linux-gnueabihf-gcc cmake
 $ git clone https://github.com/nnn112358/CoreMP135_framebuffer_OpenCV.git
 $ cd CoreMP135_framebuffer_OpenCV
