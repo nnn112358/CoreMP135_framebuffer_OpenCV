@@ -1,38 +1,37 @@
-# ƒvƒƒWƒFƒNƒg–¼‚Æg—pŒ¾ŒêACMake‚ÌÅ’áƒo[ƒWƒ‡ƒ“‚ğİ’è
+# ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåã¨ä½¿ç”¨è¨€èªã€CMakeã®æœ€ä½ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®š
 cmake_minimum_required(VERSION 3.5)
 project(example LANGUAGES CXX)
 
-# ƒrƒ‹ƒhƒ^ƒCƒv‚ğƒŠƒŠ[ƒX‚Éİ’è‚µ‚ÄAÅ“K‰»‚³‚ê‚½ƒpƒtƒH[ƒ}ƒ“ƒX‚Åƒrƒ‹ƒh
+# ãƒ“ãƒ«ãƒ‰ã‚¿ã‚¤ãƒ—ã‚’ãƒªãƒªãƒ¼ã‚¹ã«è¨­å®šã—ã¦ã€æœ€é©åŒ–ã•ã‚ŒãŸãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã§ãƒ“ãƒ«ãƒ‰
 set(CMAKE_BUILD_TYPE Release)
 
-# ƒRƒ“ƒpƒCƒ‰‚ÆC++•W€‚ğİ’è
+# ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã¨C++æ¨™æº–ã‚’è¨­å®š
 set(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ƒfƒoƒbƒO‚ÆƒŠƒŠ[ƒXƒrƒ‹ƒh‚ÌƒRƒ“ƒpƒCƒ‰ƒtƒ‰ƒO
+# ãƒ‡ãƒãƒƒã‚°ã¨ãƒªãƒªãƒ¼ã‚¹ãƒ“ãƒ«ãƒ‰ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ•ãƒ©ã‚°
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -Wall -g2 -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall")
 
-# OpenCV‚Ìİ’è
-#SET(OpenCV_DIR /home/nnn/LinuxHome/CoreMP135/opencv/opencv/install/arm/lib/cmake/opencv4/)
-SET(OpenCV_DIR /home/nnn/LinuxHome/CoreMP135/opencv/opencv-mobile-4.9.0/install/arm/lib/cmake/opencv4/)
+# OpenCVã®è¨­å®š
+SET(OpenCV_DIR /opt/opencv/opencv-mobile-4.10.0-armlinux/arm-linux-gnueabihf/lib/cmake/opencv4)
 
 find_package(OpenCV REQUIRED)
 
-# OpenCV‚ªŒ©‚Â‚©‚Á‚½ê‡‚Ìî•ño—Í
+# OpenCVãŒè¦‹ã¤ã‹ã£ãŸå ´åˆã®æƒ…å ±å‡ºåŠ›
 if(OpenCV_FOUND)
   message("OpenCV version: ${OpenCV_VERSION}")
   message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS}")
   message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
 endif()
 
-# Às‰Â”\ƒtƒ@ƒCƒ‹‚ğİ’è‚µAƒ\[ƒXƒtƒ@ƒCƒ‹‚ğ’Ç‰Á
+# å®Ÿè¡Œå¯èƒ½ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã—ã€ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ 
 add_executable(frame_buffer_opencv main.cpp)
 
-# OpenCV‚ÆƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒNƒ‹[ƒhƒfƒBƒŒƒNƒgƒŠ‚ğİ’è
+# OpenCVã¨ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®š
 target_include_directories(frame_buffer_opencv PRIVATE ${PROJECT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS})
 
-# OpenCVƒ‰ƒCƒuƒ‰ƒŠ‚ÆƒŠƒ“ƒN
+# OpenCVãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¨ãƒªãƒ³ã‚¯
 target_link_libraries(frame_buffer_opencv PRIVATE ${OpenCV_LIBS})
 
