@@ -44,10 +44,21 @@ $ make
 ```
 
 #### OpenCV-Mobile Cross Build instraction
+
+Unzip as follows, and include the path in cmake.
+
 ```
-$ wget -q https://github.com/nihui/opencv-mobile/releases/latest/download/opencv-mobile-4.9.0.zip
-$ unzip -q opencv-mobile-4.9.0.zip
-$ cd opencv-mobile-4.9.0
+$ wget https://github.com/nihui/opencv-mobile/releases/download/v28/opencv-mobile-4.10.0-armlinux.zip
+$ unzip opencv-mobile-4.10.0-armlinux.zip
+$ cd opencv-mobile-4.10.0-armlinux
+```
+
+If you have problems with the above method and need to rebuild
+
+```
+$ wget -q https://github.com/nihui/opencv-mobile/releases/latest/download/opencv-mobile-4.10.0.zip
+$ unzip -q opencv-mobile-4.10.0.zip
+$ cd opencv-mobile-4.10.0
 $ cmake -B build/arm -DCMAKE_TOOLCHAIN_FILE=./arm-gnueabihf.toolchain.cmake -DCMAKE_BUILD_TYPE=Release `cat ./options.txt` -DBUILD_opencv_world=OFF .
 $ cmake --build build/arm
 $ cmake --install build/arm --prefix install/arm
